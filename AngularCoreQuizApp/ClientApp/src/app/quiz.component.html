@@ -12,9 +12,9 @@
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button *ngIf="!quiz.id" (click)="api.postQuiz(quiz)" md-button>POST</button>
+    <button *ngIf="!quiz.id" (click)="api.postQuiz(quiz)" mat-button>POST</button>
 
-    <button *ngIf="quiz.id" (click)="null" md-button>Edit</button>
-    <button *ngIf="quiz.id" (click)="null" md-button>NEW</button>
+    <button *ngIf="quiz.id" (click)="null" mat-button>Edit</button>
+    <button *ngIf="quiz.id" (click)="null" mat-button>NEW</button>
   </mat-card-actions>
 </mat-card>

@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
   selector: 'nav',
   template: `
 <mat-toolbar>
-<button md-button routerLink="/">Quiz</button>
-<button md-button routerLink="/question">Question</button>
-<button md-button routerLink="/questions">Question List</button>
+<button mat-button routerLink="/">Quiz</button>
+<button mat-button routerLink="/question">Question</button>
+<button mat-button routerLink="/questions">Question List</button>
 </mat-toolbar>
 
 `
