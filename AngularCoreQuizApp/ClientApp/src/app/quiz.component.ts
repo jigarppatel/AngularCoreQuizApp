@@ -10,7 +10,7 @@ export class QuizComponent {
   constructor(private api: ApiService) { }
 
   ngOnInit() {
-    
+    this.api.quizSelected.subscribe(c => this.quiz = c);
   }
 
   

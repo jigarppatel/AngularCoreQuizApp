@@ -4,11 +4,13 @@ import { QuestionComponent } from './question.component';
 import { QuestionsComponent } from './questions.component';
 import { HomeComponent } from './home.component';
 import { QuizComponent } from './quiz.component';
+import { RegisterComponent } from './register.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'question', component: QuestionComponent },
-  { path: 'questions', component: QuestionsComponent },
-  { path: 'quiz', component: QuizComponent }
+  { path: 'question/:quizId', component: QuestionComponent },
+  { path: 'register', component: RegisterComponent },
+    { path: 'quiz', component: QuizComponent }
 ];
 
 @NgModule({

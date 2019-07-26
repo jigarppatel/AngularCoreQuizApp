@@ -27,16 +27,19 @@ namespace AngularCoreQuizApp.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{quizId}")]
+        public IEnumerable<Question> Get([FromRoute] int quizId)
         {
-            return "value";
+            return context.Questions.Where(c=>c.QuizId==quizId);
         }
 
         // POST api/<controller>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Question question)
         {
+            var quiz = context.Quiz.Where(c => c.ID == question.QuizId);
+            if (quiz == null)
+                return NotFound();
             context.Questions.Add(question);
             await context.SaveChangesAsync();
             return Ok(question);
