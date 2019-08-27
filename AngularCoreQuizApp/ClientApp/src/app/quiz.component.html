@@ -1,22 +1,18 @@
-<mat-card>
-  <mat-card-title>
-    <span *ngIf="quiz.id">Edit Quiz</span>
-    <span *ngIf="!quiz.id">New Quiz</span>
-  </mat-card-title>
-  <mat-card-content>
-    <form>
-      <mat-form-field class="fullwidth">
-        <input [(ngModel)]="quiz.title" name="title" matInput placeholder="Quiz Title">
-      </mat-form-field>
-     
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button *ngIf="!quiz.id" (click)="api.postQuiz(quiz)" mat-button>POST</button>
 
-    <button *ngIf="quiz.id" (click)="api.putQuiz(quiz)" mat-button>Edit</button>
+<!-- Default form contact -->
+  <form class="border border-light pt-3 pl-5  pr-5" action="#!">
 
-    <button *ngIf="quiz.id" (click)="quiz={}" mat-button>NEW</button>
-    <button *ngIf="quiz.id" [routerLink]="['/question',quiz.id]" mat-button>Edit Questions</button>
-  </mat-card-actions>
-</mat-card>
+    <p class="h4 mb-4" *ngIf="quiz.id">Edit Quiz</p>
+    <p class="h4 mb-4" *ngIf="!quiz.id">New Quiz</p>
+    <!-- Name -->
+    <input type="text" [(ngModel)]="quiz.title" required style="width:400px" name="title" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
+
+
+    <!-- Send button -->
+    <button class="btn btn-info btn-small" *ngIf="!quiz.id" (click)="post(quiz)" type="submit">Create Quiz</button>
+    <button class="btn btn-info btn-small" *ngIf="quiz.id" (click)="api.putQuiz(quiz)" type="submit">Update Quiz</button>&nbsp;
+    <button class="btn btn-info btn-small" *ngIf="quiz.id" [routerLink]="['/question',quiz.id]" type="submit">Edit Questions</button>&nbsp;
+    <button class="btn btn-info btn-small" *ngIf="quiz.id" (click)="quiz={}" type="submit">Cancel</button>
+
+  </form>
+<!-- Default form contact -->

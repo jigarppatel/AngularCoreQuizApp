@@ -28,7 +28,10 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\auth.interceptor.ts" />
     <None Remove="ClientApp\src\app\auth.service.ts" />
+    <None Remove="ClientApp\src\app\error-dialog\errordialog.component.ts" />
+    <None Remove="ClientApp\src\app\error-dialog\errordialog.service.ts" />
     <None Remove="ClientApp\src\app\home.component.ts" />
+    <None Remove="ClientApp\src\app\login.component.ts" />
     <None Remove="ClientApp\src\app\nav.component.ts" />
     <None Remove="ClientApp\src\app\questions.component.ts" />
     <None Remove="ClientApp\src\app\quiz.component.ts" />
@@ -39,7 +42,10 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\auth.interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\auth.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\error-dialog\errordialog.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\error-dialog\errordialog.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\home.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\login.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\nav.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\questions.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\quiz.component.ts" />

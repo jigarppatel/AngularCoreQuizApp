@@ -1,17 +1,10 @@
-import { Component } from '@angular/core';
-
+import { Component } from '@angular/core'
+import { AuthService } from './auth.service'
 @Component({
   selector: 'nav',
-  template: `
-<mat-toolbar>
-<button mat-button routerLink="/">Quiz</button>
-
-<span style="flex: 1 1 auto;">
-<button mat-button routerLink="/register">Register</button></span>
-</mat-toolbar>
-
-`
+  templateUrl: './nav.component.html'
+ 
 })
 export class NavComponent {
-
+  constructor(private auth: AuthService) { }
 }

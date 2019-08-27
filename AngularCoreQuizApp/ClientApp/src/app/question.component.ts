@@ -18,6 +18,10 @@ export class QuestionComponent {
 
   post(question) {
     question.quizId = this.quizId;
-    this.api.postQuestion(question);
+    this.api.postQuestion(question).subscribe(c => {
+      this.api.getQuestions(this.quizId).subscribe(s => {
+        this.api.setQuestionList(s);
+      });
+    });
   }
 }

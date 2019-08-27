@@ -8,18 +8,19 @@ import { ActivatedRoute } from '@angular/router'
 export class QuestionsComponent {
   question = {}
   questions
-  constructor(private api: ApiService, private route: ActivatedRoute) { }
+  constructor(private api: ApiService, private route: ActivatedRoute) {
+    this.api.questionList.subscribe(
+      questionList => {
+        this.questions = questionList;
+      });
+  }
 
   ngOnInit() {
     var quizId = this.route.snapshot.paramMap.get('quizId')
-    alert(quizId);
+    
     this.api.getQuestions(quizId).subscribe(res => {
-      console.log(res);
-      this.questions = res;
+      this.api.setQuestionList(res);
     });
   }
 
-  post(question) {
-    this.api.postQuestion(question);
-  }
 }

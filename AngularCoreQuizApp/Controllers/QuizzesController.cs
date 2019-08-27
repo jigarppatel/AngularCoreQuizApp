@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AngularCoreQuizApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AngularCoreQuizApp.Controllers
 {
@@ -22,7 +23,16 @@ namespace AngularCoreQuizApp.Controllers
 
         // GET: api/Quizzes
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Quiz>>> GetQuiz()
+        {
+            var userId = HttpContext.User.Claims.FirstOrDefault().Value;
+            return await _context.Quiz.Where(c=>c.OwnerId==userId).ToListAsync();
+        }
+
+        [HttpGet("all")]
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<Quiz>>> GetAllQuizzes()
         {
             return await _context.Quiz.ToListAsync();
         }
@@ -73,8 +83,16 @@ namespace AngularCoreQuizApp.Controllers
 
         // POST: api/Quizzes
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Quiz>> PostQuiz(Quiz quiz)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var userId = HttpContext.User.Claims.FirstOrDefault().Value;
+            quiz.OwnerId = userId;
             _context.Quiz.Add(quiz);
             await _context.SaveChangesAsync();
 

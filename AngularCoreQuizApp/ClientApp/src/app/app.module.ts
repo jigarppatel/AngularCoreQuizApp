@@ -7,6 +7,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatRadioModule } from '@angular/material/radio'; 
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +24,13 @@ import { NavComponent } from './nav.component'
 import { QuizComponent } from './quiz.component'
 import { QuizzesComponent } from './quizzes.component'
 import { RegisterComponent } from './register.component'
+import { LoginComponent } from './login.component'
+import { PlayComponent } from './play.component'
+import { PlayQuizComponent } from './playQuiz.component'
+import { FinishedComponent } from './finished.component'
+import { ErrorDialogComponent } from './error-dialog/errordialog.component';
+import { ErrorDialogService } from './error-dialog/errordialog.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +38,8 @@ import { RegisterComponent } from './register.component'
     QuestionsComponent,
     HomeComponent,
     NavComponent,
-    QuizComponent,
-    QuizzesComponent, RegisterComponent
+    QuizComponent, ErrorDialogComponent,
+    QuizzesComponent, RegisterComponent, LoginComponent, PlayComponent, PlayQuizComponent, FinishedComponent
   ],
   imports: [
     BrowserModule,
@@ -40,14 +50,15 @@ import { RegisterComponent } from './register.component'
     MatCardModule,
     FormsModule,
     HttpClientModule,
-    MatListModule,
+    MatListModule, MatExpansionModule, MatRadioModule, MatDialogModule,
     MatToolbarModule, ReactiveFormsModule
   ],
-  providers: [ApiService, AuthService, {
+  providers: [ApiService, AuthService, ErrorDialogService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
   }],
+  entryComponents: [ErrorDialogComponent, FinishedComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

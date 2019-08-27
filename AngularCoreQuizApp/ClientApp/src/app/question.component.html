@@ -1,32 +1,22 @@
-<mat-card>
-  <mat-card-title>
-    <span *ngIf="question.id">Edit Question</span>
-    <span *ngIf="!question.id">New Question</span>
-  </mat-card-title>
-  <mat-card-content>
-    <form>
-      <mat-form-field class="fullwidth">
-        <input [(ngModel)]="question.text" name="question" matInput placeholder="Question">
-      </mat-form-field>
-      <mat-form-field class="fullwidth">
-        <input [(ngModel)]="question.correctAnswer" name="correctAnswer" matInput placeholder="Correct Answer">
-      </mat-form-field>
-      <mat-form-field class="fullwidth">
-        <input [(ngModel)]="question.answer1" name="answer1" matInput placeholder="Wrong Answer 1">
-      </mat-form-field>
-      <mat-form-field class="fullwidth">
-        <input [(ngModel)]="question.answer2" name="answer2" matInput placeholder="Wrong Answer 2">
-      </mat-form-field>
-      <mat-form-field class="fullwidth">
-        <input [(ngModel)]="question.answer3" name="answer3" matInput placeholder="Wrong Answer 3">
-      </mat-form-field>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button *ngIf="!question.id" (click)="post(question)" mat-button>POST</button>
 
-    <button *ngIf="question.id" (click)="api.putQuestion(question)" mat-button>Edit</button>
-    <button *ngIf="question.id" (click)="question={}" mat-button>NEW</button>
-  </mat-card-actions>
-</mat-card>
+
+<form class="border border-light pt-3 pl-5 pr-5" action="#!">
+
+  <p class="h4 mb-4" *ngIf="question.id">Edit Question</p>
+  <p class="h4 mb-4" *ngIf="!question.id">New Question</p>
+  <!-- Name -->
+  <input type="text" [(ngModel)]="question.text" name="question" required  class="form-control mb-1" placeholder="Question">
+  <input type="text" [(ngModel)]="question.correctAnswer" name="correctAnswer" required class="form-control mb-1" placeholder="Correct Answer">
+  <input type="text" [(ngModel)]="question.answer1" name="answer1" required class="form-control mb-1" placeholder="Wrong Answer 1">
+  <input type="text" [(ngModel)]="question.answer2" name="answer2" required class="form-control mb-1" placeholder="Wrong Answer 2">
+  <input type="text" [(ngModel)]="question.answer3" name="answer3" required  class="form-control mb-1" placeholder="Wrong Answer 3">
+
+
+  <!-- Send button -->
+  <button class="btn btn-info btn-small" *ngIf="!question.id" (click)="post(question)" type="submit">Add new question</button>
+  <button class="btn btn-info btn-small" *ngIf="question.id" (click)="api.putQuestion(question)" type="submit">Update question</button>&nbsp;
+  <button class="btn btn-info btn-small" *ngIf="question.id" (click)="question={}" type="submit">Cancel</button>&nbsp;
+
+
+</form>
 <questions></questions>
