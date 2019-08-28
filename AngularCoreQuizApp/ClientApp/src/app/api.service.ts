@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 import { Subject } from 'rxjs';
+import { environment } from '../environments/environment';
+
+const baseUrl = environment.BaseURL;
+
 @Injectable()
 export class ApiService {
 
@@ -21,34 +25,28 @@ export class ApiService {
   }
 
   getQuestions(quizId) {
-    return this.http.get('api/Questions/' + quizId);
+    return this.http.get(baseUrl+'api/Questions/' + quizId);
   }
 
   postQuestion(question) {
-    return this.http.post('api/Questions', question);
+    return this.http.post(baseUrl +'api/Questions', question);
   }
 
   putQuestion(question) {
-    this.http.put('api/Questions/' + question.id, question).subscribe(res => {
-
-      console.log(res);
-    })
+    return this.http.put(baseUrl +'api/Questions/' + question.id, question);
   }
   putQuiz(quiz) {
-    this.http.put('api/Quizzes/' + quiz.id, quiz).subscribe(res => {
-
-      console.log(res);
-    })
+    return this.http.put(baseUrl +'api/Quizzes/' + quiz.id, quiz);
   }
 
   postQuiz(quiz) {
-    return this.http.post('api/Quizzes', quiz)
+    return this.http.post(baseUrl +'api/Quizzes', quiz)
   }
   getQuizzes() {
-    return this.http.get('api/Quizzes');
+    return this.http.get(baseUrl +'api/Quizzes');
   }
   getAllQuizzes() {
-    return this.http.get('api/quizzes/all');
+    return this.http.get(baseUrl +'api/quizzes/all');
   }
 
   selectQuestion(question) {

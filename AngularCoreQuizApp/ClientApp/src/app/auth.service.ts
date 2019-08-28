@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router';
+import { environment } from '../environments/environment';
+
+const baseUrl = environment.BaseURL;
+
 @Injectable()
 export class AuthService {
 
@@ -14,13 +18,13 @@ export class AuthService {
     return !!localStorage.getItem('token')
   }
   register(credentials) {
-    return this.http.post<any>('api/account', credentials).subscribe(res => {
+    return this.http.post<any>(baseUrl+'api/account', credentials).subscribe(res => {
 
       this.authenticate(res.token);
     })
   }
   login(credentials) {
-    return this.http.post<any>('api/account/login', credentials).subscribe(res => {
+    return this.http.post<any>(baseUrl +'api/account/login', credentials).subscribe(res => {
       this.authenticate(res.token);
     },
       err => {

@@ -25,12 +25,19 @@ namespace AngularCoreQuizApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => options.AddPolicy("Cors", builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            }));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/dist";
+                configuration.RootPath = "ClientApp/dist/frontend";
             });
 
             services.AddDbContext<QuizContext>(opt => opt.UseInMemoryDatabase("quiz"));
@@ -61,18 +68,18 @@ namespace AngularCoreQuizApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
+            //if (env.IsDevelopment())
+            //{
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-            }
+            //}
+            //else
+            //{
+            //    app.UseExceptionHandler("/Error");
+            //}
             app.UseAuthentication();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
+            app.UseCors("Cors");
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

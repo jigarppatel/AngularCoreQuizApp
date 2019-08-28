@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -20,12 +20,26 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\dist\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\dist\**" />
+    <EmbeddedResource Remove="ClientApp\dist\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\dist\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\dist\frontend\3rdpartylicenses.txt" />
+    <None Remove="ClientApp\dist\frontend\favicon.ico" />
+    <None Remove="ClientApp\dist\frontend\index.html" />
+    <None Remove="ClientApp\dist\frontend\main-es2015.9632ccf3c0bbddadaefa.js" />
+    <None Remove="ClientApp\dist\frontend\main-es5.5d130fa1d8129fb8a0b4.js" />
+    <None Remove="ClientApp\dist\frontend\polyfills-es2015.27661dfa98f6332c27dc.js" />
+    <None Remove="ClientApp\dist\frontend\polyfills-es5.7f43b971448d2fb49202.js" />
+    <None Remove="ClientApp\dist\frontend\runtime-es2015.858f8dd898b75fe86926.js" />
+    <None Remove="ClientApp\dist\frontend\runtime-es5.741402d1d47331ce975c.js" />
+    <None Remove="ClientApp\dist\frontend\styles.3d93a211e75bad02f512.css" />
     <None Remove="ClientApp\src\app\auth.interceptor.ts" />
     <None Remove="ClientApp\src\app\auth.service.ts" />
     <None Remove="ClientApp\src\app\error-dialog\errordialog.component.ts" />

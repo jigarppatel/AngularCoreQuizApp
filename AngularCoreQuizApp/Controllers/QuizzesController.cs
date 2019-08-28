@@ -31,7 +31,7 @@ namespace AngularCoreQuizApp.Controllers
         }
 
         [HttpGet("all")]
-        [Authorize]
+       
         public async Task<ActionResult<IEnumerable<Quiz>>> GetAllQuizzes()
         {
             return await _context.Quiz.ToListAsync();

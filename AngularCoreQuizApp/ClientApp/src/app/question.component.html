@@ -1,22 +1,41 @@
 
 
-<form class="border border-light pt-3 pl-5 pr-5" action="#!">
+  <form class="border border-light pt-3 pl-5 pr-5" action="#!">
 
-  <p class="h4 mb-4" *ngIf="question.id">Edit Question</p>
-  <p class="h4 mb-4" *ngIf="!question.id">New Question</p>
-  <!-- Name -->
-  <input type="text" [(ngModel)]="question.text" name="question" required  class="form-control mb-1" placeholder="Question">
-  <input type="text" [(ngModel)]="question.correctAnswer" name="correctAnswer" required class="form-control mb-1" placeholder="Correct Answer">
-  <input type="text" [(ngModel)]="question.answer1" name="answer1" required class="form-control mb-1" placeholder="Wrong Answer 1">
-  <input type="text" [(ngModel)]="question.answer2" name="answer2" required class="form-control mb-1" placeholder="Wrong Answer 2">
-  <input type="text" [(ngModel)]="question.answer3" name="answer3" required  class="form-control mb-1" placeholder="Wrong Answer 3">
+    <p class="h4 mb-4" *ngIf="question.id">Edit Question</p>
+    <p class="h4 mb-4" *ngIf="!question.id">New Question</p>
+    <!-- Name -->
 
 
-  <!-- Send button -->
-  <button class="btn btn-info btn-small" *ngIf="!question.id" (click)="post(question)" type="submit">Add new question</button>
-  <button class="btn btn-info btn-small" *ngIf="question.id" (click)="api.putQuestion(question)" type="submit">Update question</button>&nbsp;
-  <button class="btn btn-info btn-small" *ngIf="question.id" (click)="question={}" type="submit">Cancel</button>&nbsp;
+    
+    
+    
+
+    <div class="row">
+      <div class="col-sm-9 pr-0"><input type="text" [(ngModel)]="question.text" name="question" required class="form-control mb-1" placeholder="Question"></div>
+      <div class="col-sm-3 p-1"><span *ngIf="!question.text" style=" vertical-align:middle; color:red;">Required</span></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9 pr-0"><input type="text" [(ngModel)]="question.correctAnswer" name="correctAnswer" required class="form-control mb-1" placeholder="Correct Answer" /></div>
+      <div class="col-sm-3 p-1"><span *ngIf="!question.correctAnswer" style=" vertical-align:middle; color:red;">Required</span></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9 pr-0"><input type="text" [(ngModel)]="question.answer1" name="answer1" required class="form-control mb-1" placeholder="Wrong Answer 1" /></div>
+      <div class="col-sm-3 p-1"><span *ngIf="!question.answer1" style=" vertical-align:middle; color:red;">Required</span></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9 pr-0"><input type="text" [(ngModel)]="question.answer2" name="answer2" required class="form-control mb-1" placeholder="Wrong Answer 2" /></div>
+      <div class="col-sm-3 p-1"><span *ngIf="!question.answer2" style=" vertical-align:middle; color:red;">Required</span></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9 pr-0"><input type="text" [(ngModel)]="question.answer3" name="answer3" required class="form-control mb-1" placeholder="Wrong Answer 3" /></div>
+      <div class="col-sm-3 p-1"><span *ngIf="!question.answer3" style=" vertical-align:middle; color:red;">Required</span></div>
+    </div>
+    <!-- Send button -->
+    <button class="btn btn-info btn-small" *ngIf="!question.id" (click)="post(question)" type="submit">Add new question</button>
+    <button class="btn btn-info btn-small" *ngIf="question.id" (click)="put(question)" type="submit">Update question</button>&nbsp;
+    <button class="btn btn-info btn-small" *ngIf="question.id" (click)="question={}" type="submit">Cancel</button>&nbsp;
 
 
-</form>
+  </form>
 <questions></questions>

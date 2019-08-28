@@ -8,5 +8,5 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog'
     `
 })
 export class FinishedComponent {
-    constructor(@Inject(MAT_DIALOG_DATA) private data) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data) { }
 }

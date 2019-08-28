@@ -1,16 +1,18 @@
 
 <!-- Default form contact -->
-  <form class="border border-light pt-3 pl-5  pr-5" action="#!">
+  <form  class="border border-light pt-3 pl-5  pr-5" >
 
     <p class="h4 mb-4" *ngIf="quiz.id">Edit Quiz</p>
     <p class="h4 mb-4" *ngIf="!quiz.id">New Quiz</p>
     <!-- Name -->
-    <input type="text" [(ngModel)]="quiz.title" required style="width:400px" name="title" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
-
+    <div class="row">
+      <div class="col-sm-6 pr-0"><input type="text" [(ngModel)]="quiz.title" required  name="title" id="defaultContactFormName" class="form-control mb-4" placeholder="Name"></div>
+      <div class="col-sm-6 p-1"><span *ngIf="!quiz.title" style=" vertical-align:middle; color:red;">Required</span></div>
+    </div>
 
     <!-- Send button -->
     <button class="btn btn-info btn-small" *ngIf="!quiz.id" (click)="post(quiz)" type="submit">Create Quiz</button>
-    <button class="btn btn-info btn-small" *ngIf="quiz.id" (click)="api.putQuiz(quiz)" type="submit">Update Quiz</button>&nbsp;
+    <button class="btn btn-info btn-small" *ngIf="quiz.id" (click)="put(quiz)" type="submit">Update Quiz</button>&nbsp;
     <button class="btn btn-info btn-small" *ngIf="quiz.id" [routerLink]="['/question',quiz.id]" type="submit">Edit Questions</button>&nbsp;
     <button class="btn btn-info btn-small" *ngIf="quiz.id" (click)="quiz={}" type="submit">Cancel</button>
 

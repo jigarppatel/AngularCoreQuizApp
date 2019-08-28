@@ -7,7 +7,7 @@ import { FormBuilder, Validators } from '@angular/forms'
 export class RegisterComponent {
 
   form
-  constructor(private auth: AuthService, private fb: FormBuilder) {
+  constructor(public auth: AuthService, private fb: FormBuilder) {
     this.form = fb.group(
       {
         email: ['', Validators.required],

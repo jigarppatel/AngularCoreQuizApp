@@ -5,7 +5,7 @@
             let i = index" [expanded]="step === i" (opened)="setStep(i)">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            {{question.text}}
+            {{(i+1)+'. '+question.text}}
           </mat-panel-title>
           <mat-panel-description>
           </mat-panel-description>

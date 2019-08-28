@@ -42,8 +42,8 @@ export class AuthInterceptor implements HttpInterceptor {
         //if (error.error != null)
         //  data.reason = error.error;
         this.errorDialogService.openDialog(data);
-        if (error.status == 401)
-          this.router.navigateByUrl('/login');
+        //if (error.status == 401)
+        //  this.router.navigateByUrl('/login');
         return throwError(error);
       }));
   }

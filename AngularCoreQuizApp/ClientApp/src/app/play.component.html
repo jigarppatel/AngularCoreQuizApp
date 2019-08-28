@@ -1,9 +1,10 @@
-<mat-card>
-    <mat-card-content>
-        <mat-list *ngFor="let quiz of quizzes">
-            <mat-list-item class="clickLink" [routerLink]="['/playQuiz', quiz.id]"> {{quiz.title}} </mat-list-item>
-        </mat-list>
-    </mat-card-content>
-    <mat-card-actions>
-    </mat-card-actions>
-</mat-card>
+
+<form class="border border-light pt-3 pl-5  pr-5" action="#!">
+  <p class="h4 mb-4">Quizzes</p>
+
+  <ul class="list-group">
+    <li class="list-group-item active">Quiz (Click on row to edit)</li>
+    <li class="list-group-item clickLink" *ngFor="let quiz of quizzes; let i=index"  [routerLink]="['/playQuiz', quiz.id]">{{(i+1)+'. '+quiz.title}}</li>
+
+  </ul>
+</form>

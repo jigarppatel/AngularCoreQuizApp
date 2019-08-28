@@ -9,7 +9,8 @@ import { LoginComponent } from './login.component';
 import { PlayComponent } from './play.component';
 import { PlayQuizComponent } from './playQuiz.component'
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: PlayComponent },
+  { path: 'myQuiz', component: HomeComponent },
   { path: 'question', component: QuestionComponent },
   { path: 'question/:quizId', component: QuestionComponent },
   { path: 'register', component: RegisterComponent },
