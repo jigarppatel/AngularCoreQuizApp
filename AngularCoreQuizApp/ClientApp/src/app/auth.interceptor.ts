@@ -10,13 +10,14 @@ import {
 } from '@angular/common/http';
 import { Router } from '@angular/router'
 import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
+import { LoaderService } from './services/loader/loader-service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
 
 
-  constructor(public errorDialogService: ErrorDialogService, public router: Router) {
+  constructor(public errorDialogService: ErrorDialogService, private _loaderService: LoaderService, public router: Router) {
   }
 
   intercept(req, next) {
@@ -25,15 +26,23 @@ export class AuthInterceptor implements HttpInterceptor {
     var authRequest = req.clone({
       headers: req.headers.set('Authorization', 'Bearer ' + token)
     })
+    this._loaderService.setVisiblility(true);
     return next.handle(authRequest).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
           console.log('event--->>>', event);
           // this.errorDialogService.openDialog(event);
+          
+          this._loaderService.setVisiblility(false);
         }
+        
+        
         return event;
       }),
+      
       catchError((error: HttpErrorResponse) => {
+        
+        this._loaderService.setVisiblility(false);
         let data = {};
         data = {
           reason: error.error != null ? error.error: (error && error.error && error.error.length > 0 ? error.error[0].description : error.statusText),

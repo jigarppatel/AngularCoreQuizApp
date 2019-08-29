@@ -30,6 +30,9 @@ import { PlayQuizComponent } from './playQuiz.component'
 import { FinishedComponent } from './finished.component'
 import { ErrorDialogComponent } from './error-dialog/errordialog.component';
 import { ErrorDialogService } from './error-dialog/errordialog.service';
+import { LoaderService } from './services/loader/loader-service';
+import { LoaderComponent } from './loader/loader.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { ErrorDialogService } from './error-dialog/errordialog.service';
     HomeComponent,
     NavComponent,
     QuizComponent, ErrorDialogComponent,
-    QuizzesComponent, RegisterComponent, LoginComponent, PlayComponent, PlayQuizComponent, FinishedComponent
+    QuizzesComponent, RegisterComponent, LoginComponent, PlayComponent, PlayQuizComponent, FinishedComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,7 @@ import { ErrorDialogService } from './error-dialog/errordialog.service';
     MatListModule, MatExpansionModule, MatRadioModule, MatDialogModule,
     MatToolbarModule, ReactiveFormsModule
   ],
-  providers: [ApiService, AuthService, ErrorDialogService, {
+  providers: [ApiService, AuthService, ErrorDialogService,LoaderService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
