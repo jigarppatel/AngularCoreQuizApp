@@ -9,6 +9,7 @@ import { FinishedComponent } from './finished.component'
 export class PlayQuizComponent {
 
   quizId
+  quizName
   questions
 
   constructor(private api: ApiService, private route: ActivatedRoute, private dialog: MatDialog) { }
@@ -16,12 +17,24 @@ export class PlayQuizComponent {
 
   ngOnInit() {
     this.quizId = this.route.snapshot.paramMap.get('quizId')
-
+    this.quizName = this.route.snapshot.paramMap.get('quizName')
     this.api.getQuestions(this.quizId).subscribe(res => {
       this.questions = res
 
       this.questions.forEach(q => {
-        q.answers = [q.correctAnswer, q.answer1, q.answer2, q.answer3]
+        q.answers = []
+
+        q.answers.push(q.correctAnswer);
+        
+        if (q.answer1 != '')
+          q.answers.push(q.answer1);
+
+        if (q.answer2 != '')
+          q.answers.push(q.answer2);
+
+        if (q.answer3 != '')
+          q.answers.push(q.answer3);
+       
         shuffle(q.answers)
       });
     })

@@ -2,6 +2,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 .fullwidth{
   width:200%;
+  display:block;
 }
 
 .clickLink{

@@ -1,3 +1,4 @@
+<h2 class="pl-2">{{quizName}}</h2>
 <mat-card>
   <mat-card-content>
     <mat-accordion class="example-headers-align">
@@ -12,7 +13,7 @@
         </mat-expansion-panel-header>
         <mat-radio-group [(ngModel)]="question.selectedAnswer">
           <mat-radio-button class="fullWidth" *ngFor="let answer of question.answers" [value]="answer">
-            {{answer}}
+            {{answer}}<br />
           </mat-radio-button>
         </mat-radio-group>
         <mat-action-row>
@@ -25,3 +26,9 @@
         <button mat-button color="primary" (click)="finish()">Finish</button>
     </mat-card-actions>
 </mat-card>
+<style>
+  .fullWidth
+  {
+    display:block;
+  }
+</style>

@@ -3,8 +3,8 @@
   <p class="h4 mb-4">Quizzes</p>
 
   <ul class="list-group">
-    <li class="list-group-item active">Quiz (Click on row to edit)</li>
-    <li class="list-group-item clickLink" *ngFor="let quiz of quizzes; let i=index"  [routerLink]="['/playQuiz', quiz.id]">{{(i+1)+'. '+quiz.title}}</li>
+    <li class="list-group-item active">Quiz (Click on row to start quiz)</li>
+    <li class="list-group-item clickLink" *ngFor="let quiz of quizzes; let i=index"  [routerLink]="['/playQuiz', quiz.id,quiz.title]">{{(i+1)+'. '+quiz.title}}</li>
 
   </ul>
 </form>

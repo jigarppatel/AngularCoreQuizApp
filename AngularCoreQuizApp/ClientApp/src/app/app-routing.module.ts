@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'quiz', component: QuizComponent },
   { path: 'play', component: PlayComponent },
-  { path: 'playQuiz/:quizId', component: PlayQuizComponent }
+  { path: 'playQuiz/:quizId/:quizName', component: PlayQuizComponent }
 ];
 
 @NgModule({
