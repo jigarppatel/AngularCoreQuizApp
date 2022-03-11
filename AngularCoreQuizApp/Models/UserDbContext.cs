@@ -12,7 +12,7 @@ namespace AngularCoreQuizApp.Models
     {
         public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
         {
-
+1
         }
     }
 }
