@@ -17,6 +17,7 @@ namespace AngularCoreQuizApp.Pages
 
         public void OnGet()
         {
+		//1
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
         }
     }
