@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AngularCoreQuizApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]1")]
     [ApiController]
     public class QuizzesController : ControllerBase
     {
